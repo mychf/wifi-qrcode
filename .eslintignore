@@ -1,0 +1,5 @@
+node_modules
+public
+src/assets/iconfont
+src/views/address
+**/*.sh

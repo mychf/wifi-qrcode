@@ -1,0 +1,85 @@
+@aiproductBaseUrl = https://mapi-test.xxxx.cn
+@uaaBaseUrl = https://api-test.xxxx.cn
+@contentType = application/json;charet=utf-8
+
+
+### 1.权益获取sign
+POST {{aiproductBaseUrl}}/aiproduct/continentProductInfoService/getSign HTTP/1.1
+content-type: {{contentType}}
+
+{
+	"jsonStr": "{\"orderNo\":\"orderNo123456\",\"ecifId\":\"ecifId123456\",\"serviceProductId\":\"10000116352412300000048300010034\",\"startTime\":\"2021-11-21 18:56:09\",\"endTime\":\"2022-11-21 18:56:09\",\"orgCode\":\"31000000\"}",
+    "str": "KE8vdj9yaWyHHMfp",
+    "timestamp": 1635413510321
+}
+###
+
+### 权益-生成券码 voucherNo
+POST {{aiproductBaseUrl}}/aiproduct/continentService/applyRights HTTP/1.1
+content-type: {{contentType}}
+sign: 593290AF540164367BCA9B832C6FCA55E585191F
+timestamp: 1635413510321
+
+{
+    "orderNo": "orderNo123456", // 工单号
+    "ecifId": "ecifId123456", // 客户id
+    "serviceProductId": "10000116352412300000048300010034",
+    "startTime":"2021-11-21 18:56:09",
+    "endTime":"2022-11-21 18:56:09",
+    "orgCode":"31000000"
+}
+###
+
+
+### 3.前端链接-获取sign
+POST {{aiproductBaseUrl}}/aiproduct/continentProductInfoService/getSign HTTP/1.1
+content-type: {{contentType}}
+
+{
+	"jsonStr": "{\"voucherNo\":\"616460265770868736\",\"orderNo\":\"orderNo123456\",\"sex\":\"1\",\"cardType\":1,\"policyNo\":\"sFpv873Rys0GciioxHSKfw==\",\"ecifId\":\"ecifId123456\",\"custName\":\"I7D8ev/YqaVIshCWJ3GLbA==\",\"serviceProductId\":\"10000116352412300000048300010034\",\"cardNo\":\"5kp4IHGKYV7nbE9P1+8R0KsJexhzVfNmiz34ThPTLow=\"}",
+    "str": "KE8vdj9yaWyHHMfp",
+    "timestamp": 1635413510321
+}
+###
+
+
+
+### 4.大地获取高济前端地址
+POST {{aiproductBaseUrl}}/aiproduct/continentService/useRights HTTP/1.1
+content-type: {{contentType}}
+sign: 42597F53F21BE61644AEDB7285BACE2887908067
+timestamp: 1635413510321
+
+{
+    "voucherNo": "616460265770868736",  // 对应
+    "orderNo": "orderNo123456", // 对应
+    "sex": "1",
+    "cardType": 1,
+    "policyNo": "sFpv873Rys0GciioxHSKfw==", // 加密
+    "ecifId": "ecifId123456", // 对应
+    "custName": "I7D8ev/YqaVIshCWJ3GLbA==", //  加密
+    "serviceProductId": "10000116352412300000048300010034",
+    "cardNo": "5kp4IHGKYV7nbE9P1+8R0KsJexhzVfNmiz34ThPTLow=" // 加密
+}
+###
+
+
+### 获取短token
+POST {{aiproductBaseUrl}}/aiproduct/loginService/getLoginFromThirdSysToken HTTP/1.1
+content-type: {{contentType}}
+
+{   "phone": "18501793692",
+    "outerId":"11223344"
+}
+###
+
+### 获取UAA长token
+POST {{uaaBaseUrl}}/api/loginFromThirdSys HTTP/1.1
+content-type: {{contentType}}
+
+{   "businessId": 99999,
+    "sceneType": 2,
+    "source": 28,
+    "token": "JSHZc5DmCnIhO1E/k9wpB8FFfuJHIbQYbwX5bhPwCRh1TtNasABeHBRDfbhejSmS"
+}
+###

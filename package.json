@@ -1,0 +1,93 @@
+{
+    "name": "ai-h5-hmo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "http://scm.devops.xxxx.cn/MedicalMallAI/ai-h5-hmo",
+    "author": "dxf <1062787885@qq.com>",
+    "license": "MIT",
+    "scripts": {
+        "start": "npm run dev",
+        "dev": "vite --mode=development --host 0.0.0.0",
+        "stage": "vite --mode=stage",
+        "production": "vite --mode=production",
+        "build:test": "vite build --mode=development",
+        "build:stage": "vite build --mode=stage",
+        "build": "vite build",
+        "serve": "vite preview --host 0.0.0.0",
+        "lint": "eslint src --fix --ext .js,.vue",
+        "docs:dev": "vitepress-fc dev --root=docs --host --port=5000 --open",
+        "docs:build": "rimraf docs/dist && vitepress-fc build --mode=production --root=docs"
+    },
+    "dependencies": {
+        "amfe-flexible": "^2.2.1",
+        "any-touch": "^1.0.13",
+        "axios": "^0.21.1",
+        "base-64": "^1.0.0",
+        "compressorjs": "^1.0.7",
+        "cos-js-sdk-v5": "^1.2.18",
+        "crypto-js": "^4.1.1",
+        "dayjs": "^1.10.5",
+        "element-plus": "^2.2.16",
+        "html2canvas": "^1.4.1",
+        "js-cookie": "^2.2.1",
+        "jspdf": "^2.5.1",
+        "lodash": "^4.17.21",
+        "numeral": "^2.0.6",
+        "print-js": "^1.6.0",
+        "qrcode": "^1.5.1",
+        "qrcodejs2": "0.0.2",
+        "qs": "^6.10.1",
+        "rc-print": "^1.0.4",
+        "sockjs-client": "^1.5.2",
+        "stompjs": "^2.3.3",
+        "tim-js-sdk": "^2.13.1",
+        "uuid": "^8.3.2",
+        "vant": "^3.2.0",
+        "vue": "^3.2.4",
+        "vue-clipboard3": "^1.0.1",
+        "vue-qr": "^4.0.9",
+        "vue-router": "^4.0.11",
+        "vuex": "^4.0.2",
+        "vuex-persistedstate": "^4.0.0-beta.3"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-legacy": "^1.4.1",
+        "@vitejs/plugin-vue": "^1.2.3",
+        "@vitejs/plugin-vue-jsx": "^1.1.5",
+        "@vue/compiler-sfc": "^3.2.20",
+        "@windicss/animations": "^1.0.8",
+        "babel-eslint": "^10.1.0",
+        "colors": "^1.4.0",
+        "eslint": "^7.28.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-vue": "^7.0.0-beta.4",
+        "husky": "^4.3.8",
+        "less": "^4.1.1",
+        "lint-staged": "^6.1.1",
+        "mockjs": "^1.1.0",
+        "postcss": "^8.3.0",
+        "postcss-pxtorem": "^6.0.0",
+        "postcss-windicss": "^1.0.0",
+        "prettier": "^2.3.1",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-external-globals": "^0.6.1",
+        "vconsole": "^3.7.0",
+        "vite": "^2.4.1",
+        "vite-plugin-style-import": "^0.10.1",
+        "vite-plugin-windicss": "^0.15.10",
+        "vitepress-for-component": "latest",
+        "vue-run-sfc": "^1.6.0",
+        "windicss": "^3.0.9"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{js,vue}": [
+            "npm run lint"
+        ]
+    }
+}
